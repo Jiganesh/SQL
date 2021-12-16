@@ -1,0 +1,55 @@
+SELECT salesman.name AS SALESMAN, customer.cust_name AS CUSTOMER , customer.city AS CITY
+FROM salesman
+JOIN customer ON customer.city = salesman.city
+-----------------------------------------------------------------------------------------------------
+
+SELECT  a.ord_no,a.purch_amt,b.cust_name,b.city 
+FROM orders a,customer b 
+WHERE a.customer_id=b.customer_id 
+AND a.purch_amt BETWEEN 500 AND 2000;
+-----------------------------------------------------------------------------------------------------
+
+SELECT a.cust_name AS "Customer Name", 
+a.city, b.name AS "Salesman", b.commission 
+FROM customer a 
+INNER JOIN salesman b 
+ON a.salesman_id=b.salesman_id;
+
+-----------------------------------------------------------------------------------------------------
+
+SELECT a.cust_name AS "Customer Name", 
+a.city, b.name AS "Salesman", b.commission 
+FROM customer a 
+INNER JOIN salesman b 
+ON a.salesman_id=b.salesman_id 
+WHERE b.commission>.12;
+
+-----------------------------------------------------------------------------------------------------
+SELECT customer.cust_name, customer.city, salesman.name, salesman.commission
+FROM customer, salesman
+WHERE customer.salesman_id = salesman.salesman_id 
+    AND salesman.commission>0.12 
+    AND customer.city != salesman.city
+
+
+
+SELECT a.cust_name AS "Customer Name", 
+a.city, b.name AS "Salesman", b.city,b.commission  
+FROM customer a  
+INNER JOIN salesman b  
+ON a.salesman_id=b.salesman_id 
+WHERE b.commission>.12 
+AND a.city<>b.city;
+-----------------------------------------------------------------------------------------------------
+
+SELECT a.ord_no,a.ord_date,a.purch_amt,
+b.cust_name AS "Customer Name", b.grade, 
+c.name AS "Salesman", c.commission 
+FROM orders a 
+INNER JOIN customer b 
+ON a.customer_id=b.customer_id 
+INNER JOIN salesman c 
+ON a.salesman_id=c.salesman_id;
+
+-----------------------------------------------------------------------------------------------------
+
